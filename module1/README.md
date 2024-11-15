@@ -9,7 +9,12 @@ The purpose of this task is to create a simple modular BankingApplication focusi
     IDE: IntelliJ 
     Build Tool: Apache Maven 3.6.3
     Version Control: Git
-    Testing Framework: JUnit 5
+
+## Testing Frameworks:
+    JUnit 5
+    Mockito
+    AssertJ
+    
 
 
 
