@@ -1,4 +1,4 @@
-package repository;
+package com.epam.backend.core.dto.repository;
 
 import com.epam.backend.core.dto.Subscription;
 
