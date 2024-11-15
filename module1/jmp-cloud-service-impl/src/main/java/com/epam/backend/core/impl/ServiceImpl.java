@@ -9,7 +9,6 @@ import com.epam.backend.core.dto.repository.impl.SubscriptionNotFoundException;
 import com.epam.backend.core.service.Service;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
