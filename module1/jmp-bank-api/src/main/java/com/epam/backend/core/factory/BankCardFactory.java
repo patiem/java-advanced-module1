@@ -7,6 +7,7 @@ import com.epam.backend.core.dto.DebitBankCard;
 import com.epam.backend.core.dto.User;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class BankCardFactory {
@@ -19,10 +20,10 @@ public class BankCardFactory {
 
     public static BankCard createBankCard(User user, BankCardType cardType) {
 
-        Function<User, BankCard> cardSupplier = cardMap.get(cardType);
-        if (cardSupplier == null) {
-            throw new IllegalArgumentException("Unknown card type: " + cardType);
-        }
+        Function<User, BankCard> cardSupplier = Optional.ofNullable(cardType)
+                .map(bankCardType -> cardMap.get(cardType))
+                        .orElseThrow(() -> new IllegalArgumentException("Unknown card type: " + cardType));
+
         return cardSupplier.apply(user);
     }
 }
