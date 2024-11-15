@@ -12,4 +12,8 @@ import java.time.LocalDate;
 public class Subscription {
     private String bankCardNumber;
     private LocalDate startDate;
+
+    public static Subscription of(String bankCardNumber, LocalDate startDate) {
+        return new Subscription(bankCardNumber, startDate);
+    }
 }
