@@ -7,6 +7,7 @@ import com.epam.backend.core.dto.User;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -22,6 +23,7 @@ public interface Service {
 
     default double getAverageUsersAge(){
         return getAllUsers().stream()
+                .filter(user -> Objects.nonNull(user.getBirthday()))
                 .mapToDouble(user -> ChronoUnit.YEARS.between(user.getBirthday(), LocalDate.now()))
                     .average()
                     .orElse(0.0);

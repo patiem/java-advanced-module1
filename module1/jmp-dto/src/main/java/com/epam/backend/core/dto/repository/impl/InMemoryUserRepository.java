@@ -4,6 +4,7 @@ import com.epam.backend.core.dto.User;
 import com.epam.backend.core.dto.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,6 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public List<User> getAllUsers() {
-        return usersList.stream()
-                .collect(Collectors.toUnmodifiableList());
+        return  Collections.unmodifiableList(usersList);
     }
 }

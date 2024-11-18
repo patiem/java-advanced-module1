@@ -4,7 +4,9 @@ import com.epam.backend.core.dto.Subscription;
 import com.epam.backend.core.dto.repository.SubscriptionRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -13,7 +15,8 @@ public class InMemorySubscriptionRepository implements SubscriptionRepository {
 
     @Override
     public void addSubscription(Subscription subscription) {
-        subscriptions.add(subscription);
+        Optional.ofNullable(subscription)
+                        .ifPresent(subscriptions::add);
     }
 
     @Override
@@ -23,9 +26,7 @@ public class InMemorySubscriptionRepository implements SubscriptionRepository {
 
     @Override
     public List<Subscription> getAllSubscriptions() {
-        return subscriptions
-                .stream()
-                .collect(Collectors.toUnmodifiableList()); // Return a copy to prevent external modifications
+        return Collections.unmodifiableList(subscriptions);
     }
 
     @Override
